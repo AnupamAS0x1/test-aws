@@ -5,14 +5,14 @@ phases:
       python: 3.10
     commands:
       - echo "Installing dependencies..."
-      - pip install -r requirements.txt -t lib
+      - pip install -r code/requirements.txt -t code/lib
   build:
     commands:
       - echo "Zipping deployment package..."
       - cd code  # Go inside the code folder
       - zip -r9 ../deployment_package.zip .  # Select all files and zip
       - cd ..
-      - zip -g deployment_package.zip lambda_function.py
+      - zip -g deployment_package.zip code/lambda_function.py  # Add lambda_function.py from code folder
   post_build:
     commands:
       - echo "Updating Lambda Function..."
