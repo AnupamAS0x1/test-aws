@@ -10,7 +10,7 @@ phases:
     commands:
       - echo "Zipping deployment package..."
       - cd code  # Go inside the code folder
-      - zip -r9 ../deployment_package.zip .  # Select all files and zip
+      - zip -r9 ../deployment_package.zip *  # Select all files and zip (excluding the root directory)
       - cd ..
       - zip -g deployment_package.zip code/lambda_function.py  # Add lambda_function.py from code folder
   post_build:
